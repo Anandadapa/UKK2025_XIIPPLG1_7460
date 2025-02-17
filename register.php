@@ -21,40 +21,19 @@ mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Registrasi</title>
-    <link rel="stylesheet" href="styless.css">
-</head>
+<html>
+<head><title>Register</title></head>
 <body>
-    <div class="register-container">
-        <div class="register-box">
-            <h2>Registrasi</h2>
-            <form action="#" method="POST">
-                <div class="input-box">
-                    <input type="text" name="username" required>
-                    <label for="username">Username</label>
-                </div>
-                <div class="input-box">
-                    <input type="email" name="email" required>
-                    <label for="email">Email</label>
-                </div>
-                <div class="input-box">
-                    <input type="password" name="password" required>
-                    <label for="password">Password</label>
-                </div>
-                <div class="input-box">
-                    <input type="password" name="confirm_password" required>
-                    <label for="confirm_password">Konfirmasi Password</label>
-                </div>
-                <button type="submit" class="btn">Daftar</button>
-                <div class="login-link">
-                    Sudah punya akun? <a href="login.html">Login</a>
-                </div>
-            </form>
-        </div>
-    </div>
+    <h2>Register</h2>
+    <form method="POST">
+        Username: <input type="text" name="username" required><br>
+        Password: <input type="password" name="password" required><br>
+        Role: 
+        <select name="role">
+            <option value="admin">Admin</option>
+            <option value="pelanggan">Pelanggan</option>
+        </select><br>
+        <input type="submit" value="Register">
+    </form>
 </body>
 </html>
