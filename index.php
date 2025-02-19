@@ -1,3 +1,4 @@
+
 <?php
 	include 'database.php';
 
@@ -49,18 +50,9 @@
 		header('Refresh:0; url=index.php');
 	}
 
-	if(isset($_POST['add'])){
-    $task = mysqli_real_escape_string($conn, $_POST['task']);
-    $q_insert = "INSERT INTO tasks (tasklabel, taskstatus, created_at) VALUES ('$task', 'open', NOW())";
-    $run_q_insert = mysqli_query($conn, $q_insert);
-
-    if($run_q_insert){
-        header('Refresh:0; url=index.php');
-    }
-}
-
-
 ?>
+
+<a class="btn btn-danger ml-3" href="logout.php" onclick="return confirm('yakin ingin logout?')">Logout</a>
 
 <!DOCTYPE html>
 <html>
@@ -162,10 +154,12 @@
 
 	<div class="container">
 		
+		
 		<div class="header">
 			
 			<div class="title">
 				<i class='bx bx-sun'></i>
+				
 				<span>To Do List</span>
 			</div>
 
@@ -188,10 +182,33 @@
 					</div>
 
 				</form>
-
+				
 			</div>
 
 
+
+			<?php
+	$query_cat = "SELECT * FROM categories";
+		$run_cat = mysqli_query($conn, $query_cat);
+	?>
+
+	<form action="" method="post">
+   	 <input type="text" name="task" class="input-control" placeholder="Add task" required>
+
+    	<select name="category" class="input-control" required>
+        <?php while ($cat = mysqli_fetch_assoc($run_cat)) { ?>
+            <option value="<?= $cat['category_name'] ?>"><?= $cat['category_name'] ?></option>
+      		  <?php } ?>
+   		 </select>
+
+    <div class="text-right">
+        <button type="submit" name="add">Add</button>
+    </div>
+</form>
+
+
+
+				
 			<?php
 
 				if(mysqli_num_rows($run_q_select) > 0){
@@ -217,5 +234,7 @@
 
 	</div>
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

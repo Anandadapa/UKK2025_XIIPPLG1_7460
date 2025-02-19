@@ -1,4 +1,12 @@
 <?php
+$host = "localhost"; 
+$user = "root"; 
+$pass = ""; 
+$db = "todolist"; 
 
-	$conn = mysqli_connect('localhost', 'root', '', 'todolist') or die ('Gagal terhubung ke database');
-	?>
+$conn = new mysqli($host, $user, $pass, $db);
+
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
+}
+?>
