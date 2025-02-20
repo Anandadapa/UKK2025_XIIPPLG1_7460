@@ -1,12 +1,11 @@
 <?php
 	include 'database.php';
 
-	// select data yang akan diedit
 	$q_select = "select * from tasks where taskid = '".$_GET['id']."' ";
 	$run_q_select = mysqli_query($conn, $q_select);
 	$d = mysqli_fetch_object($run_q_select);
 
-	// proses edit data
+	
 	if(isset($_POST['edit'])){
 
 		$q_update = "update tasks set tasklabel = '".$_POST['task']."' where taskid = '".$_GET['id']."' ";

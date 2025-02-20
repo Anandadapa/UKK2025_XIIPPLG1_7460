@@ -7,10 +7,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Hash password sebelum disimpan
+   
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
-    // Cek apakah username atau email sudah ada
     $check_sql = "SELECT * FROM users WHERE username=? OR email=?";
     $stmt = $conn->prepare($check_sql);
     $stmt->bind_param("ss", $username, $email);
@@ -20,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         echo "<script>alert('Username atau email sudah digunakan!'); window.location='register.php';</script>";
     } else {
-        // Simpan ke database
+   
         $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sss", $username, $email, $hashed_password);

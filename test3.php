@@ -49,11 +49,7 @@ if (isset($_GET['done'])) {
     header('Location: index.php');
     exit;
 }
-
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,12 +57,11 @@ if (isset($_GET['done'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
-	
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
         body {
-            background: linear-gradient(to right,rgb(168, 156, 180), #2575fc);
+            background: linear-gradient(to right, #6a11cb, #2575fc);
             color: white;
             min-height: 100vh;
             display: flex;
@@ -87,10 +82,6 @@ if (isset($_GET['done'])) {
 </head>
 <body>
     <div class="container p-4">
-	<a class="btn btn-danger ml-3" href="logout.php" onclick="return confirm('yakin ingin logout?')">Logout</a>
-	<a href="category.php" class="btn btn-info ml-3">category</a>
-	<a href="profil.php" class="btn btn-info ml-3">profil</a>
-	<a href="history.php" class="btn btn-info ml-3">history</a>
         <h2 class="text-center">To-Do List</h2>
         <p class="text-center text-light"> <?= date("l, d M Y") ?> </p>
 

@@ -1,7 +1,7 @@
 <?php
-include 'database.php'; // Panggil koneksi database
+include 'database.php'; 
 
-// Tambah kategori baru
+
 if (isset($_POST['add_category'])) {
     $category = $_POST['category'];
     $query = "INSERT INTO categories (category_name) VALUES ('$category')";
@@ -10,7 +10,7 @@ if (isset($_POST['add_category'])) {
     exit;
 }
 
-// Hapus kategori
+
 if (isset($_GET['delete'])) {
     $category_id = $_GET['delete'];
     $query = "DELETE FROM categories WHERE id = $category_id";
@@ -19,10 +19,12 @@ if (isset($_GET['delete'])) {
     exit;
 }
 
-// Ambil daftar kategori
+
 $query = "SELECT * FROM categories";
 $run_query = mysqli_query($conn, $query);
 ?>
+
+<a href="index.php" class="btn btn-info md-3">kembali</a>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -89,6 +91,7 @@ $run_query = mysqli_query($conn, $query);
     </form>
 
     <table>
+        
         <tr>
             <th>Category</th>
             <th>Action</th>
@@ -101,6 +104,7 @@ $run_query = mysqli_query($conn, $query);
         <?php } ?>
     </table>
 </div>
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
